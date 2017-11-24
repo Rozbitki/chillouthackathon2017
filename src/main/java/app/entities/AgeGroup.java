@@ -1,10 +1,11 @@
-package app.entity;
+package app.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "AGE_GROUP")
-public class AgeGroup {
+public class AgeGroup implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -12,6 +13,10 @@ public class AgeGroup {
 
     @Column(name = "AGE_GROUP")
     private String ageGroup;
+
+    protected AgeGroup() {
+
+    }
 
     public Long getId() {
         return id;

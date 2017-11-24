@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @EnableAutoConfiguration
 public class HelloController {
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/", produces = "application/json")
     @ResponseBody
     String hello() {
-        return "Hello dark and *spooky* world!";
+        return "{ \"message\": \"Hello dark and *spooky* world!\" }";
     }
 
     public static void main(String[] args) throws Exception {

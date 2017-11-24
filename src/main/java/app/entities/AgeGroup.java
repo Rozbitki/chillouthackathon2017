@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class AgeGroup implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "AGE_GROUP")

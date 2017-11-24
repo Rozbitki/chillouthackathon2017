@@ -1,18 +1,17 @@
-package entity;
+package app.entities;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.time.ZonedDateTime;
 
 @Entity
-@Table(name = "USERS")
-public class User {
+@Table(name = "USERS", schema = "public")
+public class User implements Serializable{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "NAME")
@@ -44,6 +43,16 @@ public class User {
     @Column(name = "CITY")
     private String city;
 
+    protected User() {
+
+    }
+
+    public User(Long id, String name, String surname, String email) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;

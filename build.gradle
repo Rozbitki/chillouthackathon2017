@@ -12,13 +12,10 @@ repositories {
 
 dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE'
-    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
-    compile 'com.h2database:h2:1.4.191'
-    compile group: 'javax.persistence', name: 'persistence-api', version: '1.0'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.8.RELEASE'
+
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
-    // https://mvnrepository.com/artifact/org.hibernate/hibernate-annotations
-    compile group: 'org.hibernate', name: 'hibernate-annotations', version: '3.5.6-Final'
 
     testCompile 'junit:junit:4.12'
 }

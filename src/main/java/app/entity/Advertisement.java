@@ -1,12 +1,11 @@
-package entity;
+package app.entity;
 
-import enums.Discipline;
-import enums.ExpGroup;
-import enums.Frequency;
+import app.enums.ExpGroup;
+import app.enums.Frequency;
+import app.enums.SportDiscipline;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -25,8 +24,8 @@ public class Advertisement {
     @Column(name = "OWNER")
     private User owner;
 
-    @Column(name = "CAPASITY")
-    private Long capasity;
+    @Column(name = "CAPACITY")
+    private Long capacity;
 
     @Column(name = "AGE_GROUP")
     private AgeGroup agrGroup;
@@ -41,7 +40,7 @@ public class Advertisement {
     private LocalDateTime endTime;
 
     @Column(name = "DISCIPLINE")
-    private Discipline discipline;
+    private SportDiscipline sportDiscipline;
 
     @Type(type = "yes_no")
     @Column(name = "DELETED")
@@ -85,14 +84,6 @@ public class Advertisement {
         this.owner = owner;
     }
 
-    public Long getCapasity() {
-        return capasity;
-    }
-
-    public void setCapasity(Long capasity) {
-        this.capasity = capasity;
-    }
-
     public AgeGroup getAgrGroup() {
         return agrGroup;
     }
@@ -125,12 +116,12 @@ public class Advertisement {
         this.endTime = endTime;
     }
 
-    public Discipline getDiscipline() {
-        return discipline;
+    public SportDiscipline getSportDiscipline() {
+        return sportDiscipline;
     }
 
-    public void setDiscipline(Discipline discipline) {
-        this.discipline = discipline;
+    public void setSportDiscipline(SportDiscipline sportDiscipline) {
+        this.sportDiscipline = sportDiscipline;
     }
 
     public Boolean getDeleted() {
@@ -171,5 +162,13 @@ public class Advertisement {
 
     public void setExpGroup(ExpGroup expGroup) {
         this.expGroup = expGroup;
+    }
+
+    public Long getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Long capacity) {
+        this.capacity = capacity;
     }
 }

@@ -1,4 +1,4 @@
-package entity;
+package app.entity;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.hibernate.annotations.Type;

@@ -8,15 +8,22 @@ import java.util.Map;
 import java.util.UUID;
 
 public class TokenManager {
-    private static final Map<Token, User> tokenMap = new HashMap<>();
+    private static final Map<Token, User> loginTokenMap = new HashMap<>();
+    private static final Map<Token, User> emailTokenMap = new HashMap<>();
 
-    public static Token generateToken(User user){
+    public static Token generateLoginToken(User user){
         Token t = new Token(UUID.randomUUID().toString(), true);
-        tokenMap.put(t, user);
+        loginTokenMap.put(t, user);
+        return t;
+    }
+
+    public static Token generateEmailToken(User user){
+        Token t = new Token(UUID.randomUUID().toString(), true);
+        emailTokenMap.put(t, user);
         return t;
     }
 
     public static Boolean checkToken(Token token, User user){
-        return tokenMap.get(token) == user ? true : false;
+        return loginTokenMap.get(token) == user ? true : false;
     }
 }

@@ -3,25 +3,29 @@ package app.controllers;
 import app.dto.Auth;
 import app.dto.Token;
 import app.entities.User;
+import app.mail.RegistrationConfirmMail;
+import app.services.UserService;
 import app.utils.TokenManager;
+import app.utils.Validator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import sun.misc.Request;
+
+import java.time.LocalDate;
 
 @RestController
 public class AuthenticationController extends BaseController {
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = "login", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     @ResponseBody
     public Token login(@RequestBody Auth auth){
-        User u = new User(1L,"mleko","lekokm","mlako@mleko.pol");//findUserByEmail(auth.getEmail());
-        u.setPassword("xyz");
-        Token t = null;
+        Token t = new Token("", false);
+        User u = userService.getByEmail(auth.getEmail()).orElse(new User(-1L,"","","","", LocalDate.now()));
         if(u.getEmail().equals(auth.getEmail()) && u.getPassword().equals(auth.getPassword()))
-            t = TokenManager.generateToken(u);
-        else
-            t = new Token("", false);
+            t = TokenManager.generateLoginToken(u);
         return t;
     }
 
@@ -38,9 +42,13 @@ public class AuthenticationController extends BaseController {
     @RequestMapping(value = "register", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     @ResponseBody
     public Boolean register(@RequestBody User user){
-//        Boolean status = validateUser(user);
-//        if(status)
-//            UserService.save(user);
+        Boolean status = Validator.validateUser(user);
+        if(status){
+            user.setDeleted(false);
+            user.setEnabled(false);
+            userService.save(user);
+            RegistrationConfirmMail.sendMail(user);
+        }
 
         return status;
     }

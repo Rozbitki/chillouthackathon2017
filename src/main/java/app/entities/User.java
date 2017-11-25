@@ -47,12 +47,13 @@ public class User implements Serializable{
 
     }
 
-    public User(Long id, String name, String surname, String email, String password) {
+    public User(Long id, String name, String surname, String email, String password, LocalDate birthDate) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.password = password;
+        this.birthDate = birthDate;
     }
 
     public Long getId() {

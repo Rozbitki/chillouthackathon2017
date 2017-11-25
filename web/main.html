@@ -96,7 +96,7 @@
 </head>
 <body>
 <div id="content">
-    <div id="cards" class="panel panel-success">
+    <div id="cards" class="panel panel-default col-lg-8 col-md-10 ">
 
     </div>
 
@@ -105,12 +105,14 @@
 
 </div>
 <script>
+    var allData;
     $(document).ready(function() {
         $.ajax({
             url: "http://localhost:8080/api/advertisements",
             success: function(data) {
+                allData=data;
                 for(var i=0; i<data.length; i++){
-                    $("#cards").append('<div id="advertisment-'+data[i].id+'" class="panel-heading"><h3 class="panel-title">'+data[i].sportDiscipline+'</h3></div><divclass="panel-body">'+data[i].description+'<a class="pull-right more" href="#">Więcej</a></div>');
+                    $("#cards").append('<div  class="panel-heading"><h3 class="panel-title">Dyscyplina: '+data[i].sportDiscipline+'</h3></div><div class="panel-body">Opis:<br>'+data[i].description+' <span class=" pull-right"><button class"btn btn-default more" onclick="clickButton('+data[i].id+')">Więcej</button></span> </div><div id="advertisement-'+data[i].id+'" class="well well-sm" style="display: none;"><ul class="list-group"><li class="list-group-item">Organizator: '+data[i].owner.name+' '+data[i].owner.surname+'o</li><li class="list-group-item">Grupa wiekowa: '+data[i].ageGroup.ageGroup+'</li><li class="list-group-item">Termin: '+data[i].endTime+'</li><li class="list-group-item">Kwota wejściowa: '+data[i].price+'</li><li class="list-group-item">Iliość miejsc: '+data[i].capacity+'</li><li class="list-group-item">Częstotliwość: '+data[i].frequency+'</li></ul></div>');
                 }
             },
             error: function() {
@@ -118,6 +120,9 @@
 
         })
     });
+    function clickButton(id){
+        $('#advertisement-'+id).toggle();
+    }
 </script>
 </body>
 </html>

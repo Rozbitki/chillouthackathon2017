@@ -2,9 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Logowanie</title>
+    <title>FindMe - Logowanie</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="style/style.css" />
+	 <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Righteous" rel="stylesheet" />
 </head>
 <body>
+<div id="title-logo">
+<h1>FindMe</h1>
+</div>
 
+<form>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Hasło:</label>
+    <input type="password" class="form-control" id="pwd">
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox"> Pamiętaj mnie</label>
+  </div>
+  <button type="submit" class="btn btn-default">Loguj</button>
+</form>
 </body>
 </html>

@@ -10,6 +10,9 @@ public class Token {
 
 
     public Token( String token, Boolean success) {
+        if (token.startsWith("Bearer ")) {
+            token = token.substring("Bearer ".length());
+        }
         this.token = token;
         this.success = success;
     }

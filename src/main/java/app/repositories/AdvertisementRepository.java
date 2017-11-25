@@ -12,8 +12,9 @@ import java.util.Optional;
 
 @Repository
 public interface AdvertisementRepository extends CrudRepository<Advertisement, Long> {
-    public Optional<Advertisement> findByIdAndDeletedFalse(Long id);
-    public List<Advertisement> findTop10ByExpGroupAndDeletedFalseOrderByEndTimeAsc(ExpGroup expGroup);
-    public List<Advertisement> findTop10ByAgeGroupAndDeletedFalseOrderByEndTimeAsc(AgeGroup ageGroup);
-    public List<Advertisement> findTop10BySportDisciplineAndDeletedFalseOrderByEndTimeAsc(SportDiscipline sportDiscipline);
+
+    Optional<Advertisement> findByIdAndDeletedFalse(Long id);
+    List<Advertisement> findTop10ByExpGroupAndDeletedFalseOrderByEndTimeAsc(ExpGroup expGroup);
+    List<Advertisement> findTop10ByAgeGroupAndDeletedFalseOrderByEndTimeAsc(AgeGroup ageGroup);
+    List<Advertisement> findTop10BySportDisciplineAndDeletedFalseOrderByEndTimeAsc(SportDiscipline sportDiscipline);
 }

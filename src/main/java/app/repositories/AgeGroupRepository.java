@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface AgeGroupRepository extends CrudRepository<AgeGroup, Long> {
-    public Optional<AgeGroup> findById(Long id);
-    public List<AgeGroup> findAll();
+
+    Optional<AgeGroup> findById(Long id);
+    List<AgeGroup> findAll();
 }

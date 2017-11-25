@@ -143,12 +143,46 @@
 <!--kontakt-->
 <div class="container-fluid text-center" id="section3">
 	<h2>Kontakt</h2>
-	<p> W razie jakichkolwiek pytań, badź sugestii skontaktuj się z nami!</p>
-	<ul class="list-group">
-	  <li class="list-group-item"><b>E-mail:</b> findme.gliwice@gmail.com</li>
-	  <li class="list-group-item"><b>Telefon:</b> 501-137-015</li>
-	  <li class="list-group-item"><b>Adres:</b> ul. Przewozowa 32<br>44-100 Gliwice</li>
-	</ul>
+	<div class="messages"></div>
+    <div class="controls">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_name">Firstname </label>
+                    <input id="form_name" type="text" name="name" class="form-control" placeholder="Please enter your firstname *" required="required" data-error="Firstname is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+           
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_email">Email </label>
+                    <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="form_message">Message </label>
+                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="Please,leave us a message."></textarea>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-success btn-send" id="sendmssg" value="Send message">
+            </div>
+        </div>
+    </div>
+
+			
+			
+			</div>
+		  </div>
+	
+	
 </div>
 
 
@@ -157,11 +191,19 @@
 	<p> Poznaj nowych ludzi, spędź aktywnie czas i świetnie się baw!</p>
 	<a href="registration.html" class="btn btn-info" role="button">Załóż konto i rozpocznij korzystanie z <span class="findme">FindMe</span></a>
 </div>
-
+<hr>
 <footer class="footer">
-      <div class="container">
-        <span class="text-muted">sticky footer</span>
-      </div>
+	<b>Kontakt:</b> <b>E-mail:</b> findme.gliwice@gmail.com</li> <b>Telefon:</b> 501-137-015</li> <br><b>Adres:</b> ul. Przewozowa 32<br>44-100 Gliwice</li>
+				
+				<br><a href="#section1">FAQ</a>
+				<a href="#section2">Co mówią o nas</a>
+				<a href="#section3">Kontakt</a> 
+				<a href="#section4">Zarejestruj się już dziś!</a>
+			
+								  
+
+    
+		 
     </footer>
 </body>
 </html>

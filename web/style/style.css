@@ -131,7 +131,7 @@ blockquote{
 
 #title-logo{
 	font-family: 'Righteous', cursive;
-	font-size: 35px;
+	font-size: 65px;
 	tezt-align: center;
 	color: #7EBCE6;
 }
@@ -151,3 +151,7 @@ blockquote{
 #dane{
 	padding-top: 95px;
 }
+
+#sendmssg{
+	background-color:#7EBCE6;
+} 

@@ -8,9 +8,9 @@ public class RegistrationConfirmMail {
 
     public static void sendMail(User to){
         String subject = "Potwierdzenie rejestracji";
-        String message = "Skopiuj ponizszy link do paska przegladarki, aby potwierdzić: localhost:8080/activate/";
+        String message = "Skopiuj ponizszy link do paska przegladarki, aby potwierdzić: localhost:8080/api/activate/?activationToken=";
 
-        String t = TokenManager.generateEmailToken(to);
+        message += TokenManager.generateEmailToken(to);
 
         MailManager.sendMail(to.getEmail(), subject, message);
     }

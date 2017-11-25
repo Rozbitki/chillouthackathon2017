@@ -43,9 +43,9 @@ public class AuthenticationController extends BaseController {
 
         return status;
     }
-    @RequestMapping(value = "activate/{activationToken}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @RequestMapping(value = "activate", method = RequestMethod.GET, produces = "text/plain")
     @ResponseBody
-    public String activate(@PathVariable String activationToken) throws NoSuchFieldException {
+    public String activate(@RequestParam(value = "activationToken") String activationToken) throws NoSuchFieldException {
         User u = TokenManager.checkEmailToken(activationToken);
         if (u != null) {
             u.setEnabled(true);

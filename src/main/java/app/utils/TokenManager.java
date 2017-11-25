@@ -24,6 +24,22 @@ public class TokenManager {
         return t;
     }
 
+    public static User checkEmailToken(String token) throws NoSuchFieldException {
+        boolean tokenFound = false;
+        for (String t : emailTokenMap.keySet()) {
+            if (t.equals(token)) {
+                tokenFound = true;
+                break;
+            }
+        }
+
+        if (tokenFound) {
+            return emailTokenMap.get(token);
+        } else {
+            throw new NoSuchFieldException("Wrong token");
+        }
+    }
+
     public static User checkToken(String token) throws NoSuchFieldException {
         boolean tokenFound = false;
         token = token.startsWith("Bearer ") ? token.substring("Bearer ".length()) : token;
@@ -39,5 +55,9 @@ public class TokenManager {
         } else {
             throw new NoSuchFieldException("Wrong token");
         }
+    }
+
+    public static void removeFromEmailMap(String token) {
+        emailTokenMap.remove(token);
     }
 }

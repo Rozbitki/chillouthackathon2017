@@ -21,13 +21,13 @@ public class AuthenticationController extends BaseController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     @ResponseBody
-    public Token login(@RequestBody Auth auth){
-        Token t = new Token("", false);
-        User u = userService.getByEmail(auth.getEmail()).orElse(new User(-1L,"","","","", LocalDate.now()));
-        if(u.getEmail().equals(auth.getEmail()) && u.getPassword().equals(auth.getPassword())){
+    public String login(@RequestBody Auth auth) {
+        String t = null;
+        User u = userService.getByEmail(auth.getEmail()).orElse(new User(-1L, "", "", "", "", LocalDate.now()));
+        if (u.getEmail().equals(auth.getEmail()) && u.getPassword().equals(auth.getPassword())) {
             t = TokenManager.generateLoginToken(u);
         }
-        return t;
+        return "{\"token\": \"" + t + "\"}";
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
@@ -43,6 +43,8 @@ public class AuthenticationController extends BaseController {
 
         return status;
     }
-
-
+    public String activate(@PathVariable String activationToken) {
+        //todo: finish
+        return null;
+    }
 }

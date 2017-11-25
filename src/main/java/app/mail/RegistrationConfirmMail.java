@@ -8,11 +8,11 @@ public class RegistrationConfirmMail {
 
     public static void sendMail(User to){
         String subject = "Powtierdzenie rejestracji";
-        String message = "Kliknij w link, aby potwierdzić <br> ";
+        String message = "Kliknij w link, aby potwierdzić: <a href=\"localhost:8080/>";
 
-        Token t = TokenManager.generateEmailToken(to);
+        String t = TokenManager.generateEmailToken(to);
 
-        message += t.getToken() + "<br>";
+        message += t + "<br>";
 
         MailManager.sendMail(to.getEmail(), subject, message);
     }

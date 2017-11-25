@@ -10,8 +10,8 @@ import java.util.Properties;
 public class MailManager {
 
     public static void sendMail(String to, String subject, String content){
-        final String username = "xxx@gmail.com";
-        final String password = "";
+        final String username = "findme.gliwice@gmail.com";
+        final String password = "findmegliwice";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");

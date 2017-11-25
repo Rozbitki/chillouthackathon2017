@@ -1,15 +1,19 @@
 package app.controllers;
 
 
+import app.dto.Token;
 import app.entities.Advertisement;
 import app.entities.User;
 import app.enums.SportDiscipline;
 import app.services.AdvertisementService;
 import app.services.UserService;
+import app.utils.TokenManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
 
 @RestController
 public class ApiController extends BaseController {
@@ -32,10 +36,10 @@ public class ApiController extends BaseController {
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE, produces = "application/json")
     @ResponseBody
-    public ResponseEntity deleteUser(@PathVariable Long id){
+    public ResponseEntity deleteUser(@PathVariable Long id, @RequestHeader("Authorization") String authorizationHeader) throws NoSuchFieldException {
+        User u = TokenManager.checkToken(authorizationHeader);
         Boolean success = false;
-        User u = userService.getById(id).orElse(null);
-        if(u != null){
+        if(u != null && Objects.equals(u.getId(), id)){
             userService.delete(u);
             success = true;
         }
@@ -62,10 +66,14 @@ public class ApiController extends BaseController {
 
     @RequestMapping(value = "/advertisement", method = RequestMethod.PUT, produces = "application/json")
     @ResponseBody
-    public ResponseEntity addAdvertisement(@RequestBody Advertisement adv){
+    public ResponseEntity addAdvertisement(@RequestBody Advertisement adv, @RequestHeader("Authorization") String authorizationHeader) throws NoSuchFieldException {
+        User u = TokenManager.checkToken(authorizationHeader);
         Boolean succes = false;
-        advertisementService.save(adv);
-        succes = true;
+        if (u != null) {
+            adv.setOwner(u);
+            advertisementService.save(adv);
+            succes = true;
+        }
         return ResponseEntity.ok(succes);
     }
 

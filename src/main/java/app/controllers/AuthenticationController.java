@@ -43,8 +43,16 @@ public class AuthenticationController extends BaseController {
 
         return status;
     }
-    public String activate(@PathVariable String activationToken) {
-        //todo: finish
-        return null;
+    @RequestMapping(value = "activate/{activationToken}", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+    @ResponseBody
+    public String activate(@PathVariable String activationToken) throws NoSuchFieldException {
+        User u = TokenManager.checkEmailToken(activationToken);
+        if (u != null) {
+            u.setEnabled(true);
+            userService.save(u);
+            TokenManager.removeFromEmailMap(activationToken);
+        }
+
+        return "Witaj " + u.getName() + " w gronie aktywnych uzytkownikow!";
     }
 }

@@ -96,7 +96,7 @@
 </head>
 <body>
 <div id="content">
-    <div id="cards">
+    <div id="cards" class="panel panel-default">
 
     </div>
 
@@ -105,7 +105,22 @@
 
 </div>
 <script>
-    $.get
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://localhost:8080/api/advertisements",
+            success: function(data) {
+                for(var i=0; i<data.length; i++){
+                    $("#cards").append('<div id="advertisment-'+data[i].id+'" class="panel-heading"><h3 class="panel-title">'+data[i].sportDiscipline+'</h3></div><divclass="panel-body">'+data[i].description+'</div>');
+                }
+
+                console.log('asdasdasd');
+            },
+            error: function() {
+                console.log('pppp');
+            }
+
+        })
+    });
 </script>
 </body>
 </html>

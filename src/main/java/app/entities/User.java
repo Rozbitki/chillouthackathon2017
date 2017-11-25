@@ -1,5 +1,9 @@
 package app.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -34,6 +38,7 @@ public class User implements Serializable{
     @Column(name = "ENABLED")
     private Boolean enabled;
 
+    @JsonDeserialize(using= LocalDateDeserializer.class)
     @Column(name = "BIRTH_DATE")
     private LocalDate birthDate;
 

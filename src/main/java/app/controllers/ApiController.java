@@ -1,12 +1,10 @@
 package app.controllers;
 
-<<<<<<< Updated upstream
-=======
+
 import app.entities.Advertisement;
 import app.entities.User;
 import app.enums.SportDiscipline;
 import app.services.AdvertisementService;
->>>>>>> Stashed changes
 import app.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;

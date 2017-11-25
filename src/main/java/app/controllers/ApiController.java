@@ -28,7 +28,7 @@ public class ApiController extends BaseController {
         return ResponseEntity.ok(returnString);
     }
 
-    @RequestMapping(value = "/advertisements", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/advertisement", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public ResponseEntity getAdvertisement(@RequestBody String request){
         return ResponseEntity.ok(request);

@@ -24,8 +24,9 @@ public class AuthenticationController extends BaseController {
     public Token login(@RequestBody Auth auth){
         Token t = new Token("", false);
         User u = userService.getByEmail(auth.getEmail()).orElse(new User(-1L,"","","","", LocalDate.now()));
-        if(u.getEmail().equals(auth.getEmail()) && u.getPassword().equals(auth.getPassword()))
+        if(u.getEmail().equals(auth.getEmail()) && u.getPassword().equals(auth.getPassword())){
             t = TokenManager.generateLoginToken(u);
+        }
         return t;
     }
 
@@ -42,4 +43,6 @@ public class AuthenticationController extends BaseController {
 
         return status;
     }
+
+
 }

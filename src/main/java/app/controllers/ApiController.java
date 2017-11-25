@@ -48,6 +48,12 @@ public class ApiController extends BaseController {
         return ResponseEntity.ok(advertisementService.getById(id).get());
     }
 
+    @RequestMapping(value = "/advertisements", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public ResponseEntity getAdvertisements(){
+        return ResponseEntity.ok(advertisementService.getAdvertisemens());
+    }
+
     @RequestMapping(value = "/advertisement", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public ResponseEntity getAdvertisement(@RequestBody SportDiscipline discipline){
@@ -63,4 +69,9 @@ public class ApiController extends BaseController {
         return ResponseEntity.ok(succes);
     }
 
+    @RequestMapping(value = "/disciplines", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public ResponseEntity getDisciplines(){
+        return ResponseEntity.ok(SportDiscipline.values());
+    }
 }

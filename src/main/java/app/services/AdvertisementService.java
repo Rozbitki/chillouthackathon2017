@@ -1,13 +1,17 @@
 package app.services;
 
+import app.dto.AdvertiseShort;
 import app.entities.Advertisement;
 import app.entities.AgeGroup;
 import app.enums.ExpGroup;
 import app.enums.SportDiscipline;
+
 import app.repositories.AdvertisementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,11 +19,15 @@ import java.util.Optional;
 public class AdvertisementService {
 
 
-    private final AdvertisementRepository advertisementRepository;
+    private AdvertisementRepository advertisementRepository;
+
 
     @Autowired
     public AdvertisementService(AdvertisementRepository advertisementRepository) {
         this.advertisementRepository = advertisementRepository;
+    }
+
+    protected AdvertisementService() {
     }
 
     public Optional<Advertisement> getById(Long id){
@@ -34,6 +42,11 @@ public class AdvertisementService {
 
     public List<Advertisement> getAdvertisementsBySportDiscipline(SportDiscipline sportDiscipline){
         return advertisementRepository.findTop10BySportDisciplineAndDeletedFalseOrderByEndTimeAsc(sportDiscipline);
+    }
+
+
+    public Collection<Advertisement> getAdvertisemens() {
+        return advertisementRepository.findAll();
     }
 
     public void save(Advertisement adv){

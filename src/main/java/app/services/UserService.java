@@ -18,14 +18,18 @@ public class UserService {
     }
 
     public Optional<User> getById(Long id) {
-        return userRepository.findById(id);
+        return userRepository.findByIdAndDeletedFalse(id);
     }
 
     public Optional<User> getByEmail(String email){
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmailAndDeletedFalse(email);
     }
 
     public void save(User user) {
+        userRepository.save(user);
+    }
+    public void delete(User user){
+        user.setDeleted(true);
         userRepository.save(user);
     }
 }

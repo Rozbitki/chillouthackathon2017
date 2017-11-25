@@ -124,6 +124,16 @@ blockquote{
 
 .form-group{
 	
-	width: 60%;
+	width: 100%;
+	text-align: center;
 	align-items: center;
 }
+
+#title-logo{
+	font-family: 'Righteous', cursive;
+	font-size: 35px;
+	tezt-align: center;
+	color: #7EBCE6;
+}
+
+

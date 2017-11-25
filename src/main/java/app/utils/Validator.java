@@ -15,7 +15,7 @@ public class Validator {
             return false;
         else if(u.getSurname() == null || u.getSurname().equals(""))
             return false;
-        else if(u.getBirthDate() == null || !u.getBirthDate().equals(LocalDate.now()))
+        else if(u.getBirthDate() == null || u.getBirthDate().equals(LocalDate.now()))
             return false;
         return true;
     }

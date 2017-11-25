@@ -29,16 +29,6 @@ public class AuthenticationController extends BaseController {
         return t;
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String login(ModelMap model){
-        return "login";
-    }
-
-    @RequestMapping(value = "register", method = RequestMethod.GET)
-    public String register(){
-        return "register";
-    }
-
     @RequestMapping(value = "register", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
     @ResponseBody
     public Boolean register(@RequestBody User user){

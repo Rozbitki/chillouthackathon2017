@@ -1,5 +1,10 @@
 package app.controllers;
 
+import app.entities.User;
+import app.services.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -7,11 +12,18 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ApiController extends BaseController {
 
+    private final UserService userService;
+
+    @Autowired
+    public ApiController(UserService userService) {
+        this.userService = userService;
+    }
+
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public ResponseEntity getUser(@PathVariable Long id){
-        String returnString = "{\"id\": " + id + ", \"name\": \"Janusz\"}";
-        return ResponseEntity.ok(returnString);
+    public ResponseEntity getUser(@PathVariable Long id) throws JsonProcessingException {
+
+        return ResponseEntity.ok(userService.getById(id).get());
     }
 
     @RequestMapping(value = "/user/{id}", method = RequestMethod.DELETE, produces = "application/json")

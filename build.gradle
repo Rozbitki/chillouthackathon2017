@@ -14,7 +14,12 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-web:1.5.8.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.5.8.RELEASE'
     compile 'org.springframework.boot:spring-boot-starter-thymeleaf:1.5.8.RELEASE'
-    
+
+    compile 'org.springframework.data:spring-data-jpa:1.5.8.RELEASE'
+    compile 'org.springframework.data:spring-data-rest-core:1.5.8.RELEASE'
+    compile 'org.springframework.data:spring-data-rest-webmvc:1.5.8.RELEASE'
+
+
     // https://mvnrepository.com/artifact/org.postgresql/postgresql
     compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
 

@@ -28,7 +28,7 @@ public class Advertisement implements Serializable{
     private Long capacity;
 
     @Column(name = "AGE_GROUP")
-    private AgeGroup agrGroup;
+    private AgeGroup ageGroup;
 
     @Column(name = "LONGITUDE")
     private String longitude;
@@ -84,12 +84,12 @@ public class Advertisement implements Serializable{
         this.owner = owner;
     }
 
-    public AgeGroup getAgrGroup() {
-        return agrGroup;
+    public AgeGroup getAgeGroup() {
+        return ageGroup;
     }
 
-    public void setAgrGroup(AgeGroup agrGroup) {
-        this.agrGroup = agrGroup;
+    public void setAgeGroup(AgeGroup ageGroup) {
+        this.ageGroup = ageGroup;
     }
 
     public String getLongitude() {

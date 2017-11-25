@@ -136,4 +136,7 @@ blockquote{
 	color: #7EBCE6;
 }
 
-
+#accordion{
+	padding-top: 75px;
+	max-width: 60%;
+}

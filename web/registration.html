@@ -15,21 +15,21 @@
   <div class="col-md-4"></div>
     <div class="col-md-4 text-center">
 	<h1 id="title-logo">FindMe</h1>
-	<form>
+	<form id="formid">
 	<div class="form-group">
     <label for="name">Imię:</label>
-    <input type="name" class="form-control" id="name">
+    <input name="name" type="name" class="form-control" id="name">
   </div>
   
   <div class="form-group">
     <label for="surname">Nazwisko:</label>
-    <input type="surname" class="form-control" id="surname"">
+    <input name="surname" type="surname" class="form-control" id="surname"">
   </div>
   
   
   <div class="form-group">
     <label for="email">Email:</label>
-    <input type="email" class="form-control" id="email">
+    <input name="email" type="email" class="form-control" id="email">
   </div>
 	
 	  <div class="form-group">
@@ -38,26 +38,46 @@
 	</div>
 	  <div class="form-group">
 <label>Powtórz hasło: </label>
-  <input type="password" name="confirm_password"  class="form-control" id="confirm_password" />
+  <input type="password" class="form-control" id="confirm_password" />
  <br> <span id='message'></span>
 </div>
 
 <div class="form-group"> 
         <label class="control-label" for="date">Data urodzenia:</label>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="date"/>
+        <input class="form-control" id="birthDate" name="birthDate" placeholder="MM/DD/YYY" type="date"/>
       </div>
 
   <div class="checkbox">
     <label><input type="checkbox"> Pamiętaj mnie</label>
   </div>
-  <button type="submit" class="btn btn-default">Załóż konto</button>
+  <button type="submit" id="submitid" class="btn btn-default">Załóż konto</button>
 </form>
 	
   </div>
   <div class="col-md-4"></div>
 </div>
 
+<script ty[e="text/javascript">
+$("#submitid").submit(function(e) {
 
+    var url = "http://localhost:8080/api/register"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+		   dataType: 'json',
+           url: url,
+		   contentType: "application/json; charset=utf-8",
+		   data: JSON.stringify(jQuery("#formid").serializeArray()),// serializes the form's elements.
+           success: function(data)
+           {
+               console.log(data); // show response from the php script.
+           }
+         });
+
+    e.preventDefault(); // avoid to execute the actual submit of the form.
+});
+
+</script>
 <script type="text/javascript">
 $('#password, #confirm_password').on('keyup', function () {
   if ($('#password').val() == $('#confirm_password').val()) {

@@ -1,157 +1,51 @@
-html{
-	
-	background-image: url("back/background.png");
-	background-color: white;
-	 background-repeat:repeat;
+body {
+	margin: 0;
 }
 
-
-.navbar{
-	font-size: 20px;
-	margin-bottom:0px;
-	border-radius: 0px;
-	background-color: white;
-	transition: color .5s;
+.container {
+	display: grid;
+	grid-template-columns: 10% 1fr 1fr 1fr 10%;
+	grid-template-areas: 
+	"navbar navbar navbar navbar navbar"
+	". carousel carousel carousel ."
+	". faq faq faq ."
+	". about about about ."
+	". contact contact contact ."
+	". . register . ."
+	"footer footer footer footer footer";
 }
 
-.navbar-brand{
-	font-family: 'Righteous', cursive;
-	font-size: 35px;
-	color: #7EBCE6;
+.navbar {
+	grid-area: navbar;
+	background-color: lightblue;
 }
 
-.navbar:hover{
-	text-color: #7EBCE6;
+.carousel {
+	grid-area: carousel;
+	background-color: lightblue;	
 }
 
-.carousel .item {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background-color: #fff;
+.faq {
+	grid-area: faq;
+	background-color: lightblue;
 }
 
-
-#car{
-	margin-top:-250px;
+.about {
+	grid-area: about;
+	background-color: lightblue;
 }
 
-h2{
-	font-size: 60px;
-	font-family: 'Barlow Condensed', sans-serif;
-}
-h3{
-	font-size: 60px;
-	color: #333333;
-	font-family: 'Barlow Condensed', sans-serif;
-	
+.contact {
+	grid-area: contact;
+	background-color: lightblue;
 }
 
-p{
-	font-size: 25px;
-	color: #333333;
-	font-family: 'Barlow Condensed', sans-serif;
+.register {
+	grid-area: register;
+	background-color: lightblue;
 }
 
-
-.findme{
-	font-family: 'Righteous', cursive;
+.footer {
+	grid-area: footer;
+	background-color: lightblue;
 }
-
-.carousel-caption{
-	background-color: rgba(255, 255, 255, 0.5);
-}
-
-a{
-	color:#7EBCE6;
-	text-decoration: none;
-    transition: color .5s;
-}
-
-a:hover{
-	text-decoration: none;
-	text-color: #7EBCE6;
-}
-
-
-#section1{
-	padding-top: 20px;
-	max-width:50%;
-    margin: auto;
-	height: 60%;
-	
-}
-
-#section2{
-	padding-top: 20px;
-	max-width:50%;
-	margin: auto;
-	height: 60%;
-}
-
-#section3{
-	padding-top: 20px;
-	max-width:50%;
-	margin: auto;
-	height: 60%;
-}
-
-#section4{
-	padding-top: 20px;
-	max-width:50%;
-	margin: auto;
-	height: 60%;
-}
-
-#carousel-control{
-	min-width:100%;
-	height:100%;
-}
-
-blockquote{
-	 font-size: 20px;
-	 border-left: none;
-	 padding-top:30px;
-	 padding-left: 15px;
-}
-#quote{
-	font-size: 40px;
-}
-
-.panel-heading{
-	background-color: white;
-}
-
-.form-group{
-	
-	width: 100%;
-	text-align: center;
-	align-items: center;
-}
-
-#title-logo{
-	font-family: 'Righteous', cursive;
-	font-size: 65px;
-	tezt-align: center;
-	color: #7EBCE6;
-}
-
-#accordion{
-	padding-top: 75px;
-	max-width: 60%;
-}
-
-
-#powiad{
-	
-	padding-top: 75px;
-	
-}
-
-#dane{
-	padding-top: 95px;
-}
-
-#sendmssg{
-	background-color:#7EBCE6;
-} 
